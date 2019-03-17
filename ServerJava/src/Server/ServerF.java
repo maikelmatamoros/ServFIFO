@@ -24,7 +24,7 @@ import javax.activation.MimetypesFileTypeMap;
  *
  * @author jordan
  */
-public class ServerF extends Thread {
+public class ServerF {
 
     private Socket clientSocket;
     private Clients c;
@@ -33,9 +33,8 @@ public class ServerF extends Thread {
         this.clientSocket = socket;
         this.c=c;
     }
-
-    @Override
-    public void run() {
+    
+    public void init() {
 
         try {
             System.out.println("Nuevo cliente conectado");

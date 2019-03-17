@@ -32,16 +32,15 @@ public class ServerJava {
                     
                     while (true) {
                        
-                        if (c.flag()==false && c.empty()==false) {
+                        if (c.empty()==false) {
                             System.err.println("Pos nel papa");
-                            c.changeState(true);
-                            new ServerF(c.get(), c).start();
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(ServerJava.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            new ServerF(c.get(), c).init();
                         }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(ServerJava.class.getName()).log(Level.SEVERE, null, ex);
+                        }//try-cath
                     }
                 }
             });
@@ -49,11 +48,10 @@ public class ServerJava {
             h.start();
             
             do {
-                
                 c.push(mainServer.accept());
                 System.err.println("Pasa");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ServerJava.class.getName()).log(Level.SEVERE, null, ex);
                 }
